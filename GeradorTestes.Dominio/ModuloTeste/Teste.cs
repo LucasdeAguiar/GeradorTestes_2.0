@@ -19,11 +19,12 @@ namespace GeradorTestes.Dominio.ModuloTeste
         public Materia Materia { get; set; }
         
         public List<Questao> questoes = new List<Questao>();
+
         public int qtdQuestoes;
 
         public Teste()
         {
-
+            Data = DateTime.Now;
         }
 
         public override void atualizar(Teste teste)

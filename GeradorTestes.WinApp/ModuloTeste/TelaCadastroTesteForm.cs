@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using GeradorTestes.Dominio.ModuloDisciplina;
 using GeradorTestes.Dominio.ModuloMateria;
+using GeradorTestes.Dominio.ModuloQuestao;
 using GeradorTestes.Dominio.ModuloTeste;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,15 @@ namespace GeradorTestes.WinApp.ModuloTeste
     public partial class TelaCadastroTesteForm : Form
     {
         private Teste teste;
-        public TelaCadastroTesteForm(List<Disciplina> disciplinas , List<Materia> materias)
+        IRepositorioQuestao repositorioQuestao;
+        List<Questao> questoesTeste = new List<Questao>();
+        public TelaCadastroTesteForm(List<Disciplina> disciplinas , List<Materia> materias, List<Questao> questoes, IRepositorioQuestao repositorioQuestao)
         {
             InitializeComponent();
             CarregarMaterias(materias);
             CarregarDisciplinas(disciplinas);
+            this.repositorioQuestao = repositorioQuestao;
+
         }
         private void CarregarDisciplinas(List<Disciplina> disciplinas)
         {
@@ -42,6 +47,8 @@ namespace GeradorTestes.WinApp.ModuloTeste
                 cmbMaterias.Items.Add(item);
             }
         }
+
+       
 
         public Func<Teste, ValidationResult> GravarRegistro { get; set; }
 
@@ -115,6 +122,40 @@ namespace GeradorTestes.WinApp.ModuloTeste
         {
             cmbDisciplinas.Enabled = checkMarcarDisciplina.Checked;
             cmbDisciplinas.SelectedIndex = -1;
+        }
+
+        private void checkMarcarMateria_CheckedChanged_1(object sender, EventArgs e)
+        {
+            cmbMaterias.Enabled = checkMarcarMateria.Checked;
+            cmbMaterias.SelectedIndex = -1;
+        }
+
+        private void btnSortearQuestoes_Click(object sender, EventArgs e)
+        {
+            btnSortearQuestoes.Enabled = false;
+
+            int contadorQuestao = 1;
+
+            var questoes = repositorioQuestao.SelecionarTodos()
+                            .Where(x => x.Disciplina.Nome == cmbDisciplinas.Text)
+                            .Where(x => x.Materia.Nome == cmbMaterias.Text)
+                            .ToList();
+
+            var random = new Random();
+            var questoesSorteadas = questoes.OrderBy(item => random.Next()).ToList();
+
+            for (int i = 0; i < int.Parse(txtQtdQuestoes.Text); i++)
+            {
+                questoesTeste.Add(questoesSorteadas.ElementAt(i));
+            }
+
+            listQuestoes.Items.Clear();
+
+            foreach (var item in questoesTeste)
+            {
+                listQuestoes.Items.Add(contadorQuestao + " /  " + item.ToString());
+                contadorQuestao++;
+            }
         }
     }
 }

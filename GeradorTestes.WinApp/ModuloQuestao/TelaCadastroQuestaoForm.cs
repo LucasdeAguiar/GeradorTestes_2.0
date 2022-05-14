@@ -17,6 +17,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
     public partial class TelaCadastroQuestaoForm : Form
     {
         private Questao questao;
+       
         public TelaCadastroQuestaoForm(List<Materia> materias, List<Disciplina> disciplinas)
         {
             InitializeComponent();
@@ -27,12 +28,23 @@ namespace GeradorTestes.WinApp.ModuloQuestao
 
         private void CarregarMaterias(List<Materia> materias)
         {
+  
             cmbMaterias.Items.Clear();
-
+          
             foreach (var item in materias)
             {
+            
                 cmbMaterias.Items.Add(item);
             }
+        }
+        private Disciplina pegaDisciplina()
+        {
+            Disciplina disciplinaSelecionada = null;
+
+            if(cmbDisciplinas.SelectedItem != null)
+             disciplinaSelecionada =(Disciplina)cmbDisciplinas.SelectedItem;
+
+            return disciplinaSelecionada;
         }
 
         private void CarregarDisciplinas(List<Disciplina> disciplinas)
@@ -41,6 +53,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
 
             foreach (var item in disciplinas)
             {
+                
                 cmbDisciplinas.Items.Add(item);
             }
         }

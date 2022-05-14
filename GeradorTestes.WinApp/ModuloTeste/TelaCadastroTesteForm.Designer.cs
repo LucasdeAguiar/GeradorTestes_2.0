@@ -41,12 +41,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtData = new System.Windows.Forms.DateTimePicker();
             this.txtQtdQuestoes = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSortearQuestoes = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.checkMarcarDisciplina = new System.Windows.Forms.CheckBox();
             this.checkMarcarMateria = new System.Windows.Forms.CheckBox();
+            this.listQuestoes = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -159,23 +159,15 @@
             this.txtQtdQuestoes.Size = new System.Drawing.Size(110, 23);
             this.txtQtdQuestoes.TabIndex = 12;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(34, 253);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 113);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Questões";
-            // 
             // btnSortearQuestoes
             // 
-            this.btnSortearQuestoes.Location = new System.Drawing.Point(34, 399);
+            this.btnSortearQuestoes.Location = new System.Drawing.Point(286, 198);
             this.btnSortearQuestoes.Name = "btnSortearQuestoes";
-            this.btnSortearQuestoes.Size = new System.Drawing.Size(115, 48);
+            this.btnSortearQuestoes.Size = new System.Drawing.Size(115, 23);
             this.btnSortearQuestoes.TabIndex = 14;
             this.btnSortearQuestoes.Text = "Sortear Questões";
             this.btnSortearQuestoes.UseVisualStyleBackColor = true;
+            this.btnSortearQuestoes.Click += new System.EventHandler(this.btnSortearQuestoes_Click);
             // 
             // btnGravar
             // 
@@ -218,18 +210,28 @@
             this.checkMarcarMateria.TabIndex = 18;
             this.checkMarcarMateria.Text = "Habilitar Seleção de Materia";
             this.checkMarcarMateria.UseVisualStyleBackColor = true;
+            this.checkMarcarMateria.CheckedChanged += new System.EventHandler(this.checkMarcarMateria_CheckedChanged_1);
+            // 
+            // listQuestoes
+            // 
+            this.listQuestoes.FormattingEnabled = true;
+            this.listQuestoes.ItemHeight = 15;
+            this.listQuestoes.Location = new System.Drawing.Point(77, 256);
+            this.listQuestoes.Name = "listQuestoes";
+            this.listQuestoes.Size = new System.Drawing.Size(307, 109);
+            this.listQuestoes.TabIndex = 19;
             // 
             // TelaCadastroTesteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 472);
+            this.Controls.Add(this.listQuestoes);
             this.Controls.Add(this.checkMarcarMateria);
             this.Controls.Add(this.checkMarcarDisciplina);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnSortearQuestoes);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtQtdQuestoes);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.label6);
@@ -267,11 +269,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker txtData;
         private System.Windows.Forms.TextBox txtQtdQuestoes;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSortearQuestoes;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox checkMarcarDisciplina;
         private System.Windows.Forms.CheckBox checkMarcarMateria;
+        private System.Windows.Forms.ListBox listQuestoes;
     }
 }

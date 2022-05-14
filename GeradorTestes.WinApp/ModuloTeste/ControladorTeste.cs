@@ -1,5 +1,6 @@
 ﻿using GeradorTestes.Dominio.ModuloDisciplina;
 using GeradorTestes.Dominio.ModuloMateria;
+using GeradorTestes.Dominio.ModuloQuestao;
 using GeradorTestes.Dominio.ModuloTeste;
 using GeradorTestes.WinApp.Compartilhado;
 using System;
@@ -16,23 +17,25 @@ namespace GeradorTestes.WinApp.ModuloTeste
         private readonly IRepositorioTeste repositorioTeste;
         private readonly IRepositorioDisciplina repositorioDisciplina;
         private readonly IRepositorioMateria repositorioMateria;
+        private readonly IRepositorioQuestao repositorioQuestao;
 
         private TabelaTestesControl tabelaTestes;
 
-        public ControladorTeste(IRepositorioTeste repositorioTeste,IRepositorioDisciplina repositorioDisciplina, IRepositorioMateria repositorioMateria)
+        public ControladorTeste(IRepositorioTeste repositorioTeste,IRepositorioDisciplina repositorioDisciplina, IRepositorioMateria repositorioMateria, IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioTeste = repositorioTeste;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioMateria = repositorioMateria;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         public override void Inserir()
         {
             var disciplinas = repositorioDisciplina.SelecionarTodos();
             var materias = repositorioMateria.SelecionarTodos();
+            var questoes = repositorioQuestao.SelecionarTodos();
 
-
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias);
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias, questoes, repositorioQuestao);
             tela.Teste = new Teste();
 
             tela.GravarRegistro = repositorioTeste.Inserir;
@@ -57,8 +60,9 @@ namespace GeradorTestes.WinApp.ModuloTeste
             }
             var disciplinas = repositorioDisciplina.SelecionarTodos();
             var materias = repositorioMateria.SelecionarTodos();
+            var questoes = repositorioQuestao.SelecionarTodos();
 
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias);
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias, questoes, repositorioQuestao);
 
             tela.Teste = testeSelecionado;
 
