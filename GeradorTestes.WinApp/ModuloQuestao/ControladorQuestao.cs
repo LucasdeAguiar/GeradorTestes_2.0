@@ -1,4 +1,5 @@
-﻿using GeradorTestes.Dominio.ModuloMateria;
+﻿using GeradorTestes.Dominio.ModuloDisciplina;
+using GeradorTestes.Dominio.ModuloMateria;
 using GeradorTestes.Dominio.ModuloQuestao;
 using GeradorTestes.WinApp.Compartilhado;
 using System;
@@ -14,23 +15,25 @@ namespace GeradorTestes.WinApp.ModuloQuestao
     {
         private readonly IRepositorioQuestao repositorioQuestao;
         private readonly IRepositorioMateria repositorioMateria;
-
+        private readonly IRepositorioDisciplina repositorioDisciplina;
 
 
         private TabelaQuestoesControl tabelaQuestoes;
 
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
             this.repositorioQuestao = repositorioQuestao;
             this.repositorioMateria = repositorioMateria;
+            this.repositorioDisciplina = repositorioDisciplina;
         }
 
         public override void Inserir()
         {
             var materias = repositorioMateria.SelecionarTodos();
+            var disciplinas = repositorioDisciplina.SelecionarTodos();
 
-            TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(materias);
+            TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(materias, disciplinas);
             tela.Questao = new Questao();
 
             tela.GravarRegistro = repositorioQuestao.Inserir;
@@ -55,8 +58,9 @@ namespace GeradorTestes.WinApp.ModuloQuestao
                 return;
             }
             var materias = repositorioMateria.SelecionarTodos();
+            var disciplinas = repositorioDisciplina.SelecionarTodos();
 
-            TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(materias);
+            TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(materias,disciplinas);
 
             tela.Questao = questaoSelecionada;
 

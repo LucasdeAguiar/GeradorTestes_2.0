@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using GeradorTestes.Dominio.ModuloDisciplina;
 using GeradorTestes.Dominio.ModuloMateria;
 using GeradorTestes.Dominio.ModuloQuestao;
 using System;
@@ -16,12 +17,12 @@ namespace GeradorTestes.WinApp.ModuloQuestao
     public partial class TelaCadastroQuestaoForm : Form
     {
         private Questao questao;
-        public TelaCadastroQuestaoForm(List<Materia> materias)
+        public TelaCadastroQuestaoForm(List<Materia> materias, List<Disciplina> disciplinas)
         {
             InitializeComponent();
 
             CarregarMaterias(materias);
-            
+            CarregarDisciplinas(disciplinas);
         }
 
         private void CarregarMaterias(List<Materia> materias)
@@ -31,6 +32,16 @@ namespace GeradorTestes.WinApp.ModuloQuestao
             foreach (var item in materias)
             {
                 cmbMaterias.Items.Add(item);
+            }
+        }
+
+        private void CarregarDisciplinas(List<Disciplina> disciplinas)
+        {
+            cmbDisciplinas.Items.Clear();
+
+            foreach (var item in disciplinas)
+            {
+                cmbDisciplinas.Items.Add(item);
             }
         }
 
@@ -51,8 +62,13 @@ namespace GeradorTestes.WinApp.ModuloQuestao
                 checkMarcarMateria.Checked = questao.Materia != null;
 
                 cmbMaterias.SelectedItem = questao.Materia;
-
+              
          
+                cmbDisciplinas.Enabled = questao.Disciplina != null;
+
+                checkMarcarDisciplina.Checked = questao.Disciplina == null;
+
+                cmbDisciplinas.SelectedItem = questao.Disciplina;
             }
         }
 
@@ -60,6 +76,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
         {
             questao.Enunciado = txtEnunciado.Text;
             questao.Materia = (Materia)cmbMaterias.SelectedItem;
+            questao.Disciplina = (Disciplina)cmbDisciplinas.SelectedItem;
 
             var resultadoValidacao = GravarRegistro(questao);
 
@@ -89,5 +106,45 @@ namespace GeradorTestes.WinApp.ModuloQuestao
             cmbMaterias.Enabled = checkMarcarMateria.Checked;
             cmbMaterias.SelectedIndex = -1;
         }
+
+        private void checkMarcarDisciplina_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbDisciplinas.Enabled = checkMarcarDisciplina.Checked;
+            cmbDisciplinas.SelectedIndex = -1;
+        }
+
+        private void MarcarComoCorreta(Alternativa alternativa)
+        {
+            if (checkMarcarAlternativaCorreta.Checked && checkMarcarAlternativaCorreta.Enabled == true)
+                alternativa.estaCorreta = true;
+        }
+
+        private void btnAdicionarAlternativa_Click(object sender, EventArgs e)
+        {
+            AdicionarAlternativa();
+
+
+            listAlternativas.Items.Clear();
+
+            if (questao.Alternativas != null && questao.Alternativas.Count > 0)
+                foreach (var alternativa in questao.Alternativas)
+                    listAlternativas.Items.Add(alternativa);
+
+         
+        }
+
+        private void AdicionarAlternativa()
+        {
+            Alternativa alternativa = new Alternativa();
+
+            alternativa.Descricao = txtAlternativa.Text;
+
+            MarcarComoCorreta(alternativa);
+
+            var resultado = questao.AdicionarAlternativa(alternativa);
+
+        }
+
+        
     }
 }

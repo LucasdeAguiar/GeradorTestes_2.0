@@ -1,4 +1,5 @@
-﻿using GeradorTestes.Dominio.Compartilhado;
+﻿using FluentValidation.Results;
+using GeradorTestes.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,22 @@ namespace GeradorTestes.Dominio.ModuloQuestao
         public string Descricao { get; set; }
         public bool estaCorreta{ get; set; }
 
-        public Alternativa(string descricao)
+        public Alternativa()
         {
-            Descricao = descricao;
             this.estaCorreta = false;
         }
 
+        public Alternativa(string descricao, bool estaCorreta)
+        {
+            this.Descricao = descricao;
+            this.estaCorreta = estaCorreta;
+        }
+      
+
         public override string ToString()
         {
-            string status = estaCorreta == true ? "Correta" : "Falsa";
-            return $"Alternativa: {Descricao} | {status}";
+            string status = estaCorreta == true ? "Resposta Correta" : "Resposta Falsa";
+            return $"Alternativa: {Descricao} / {status}";
         }
 
         public void atualizarAlternativa(Alternativa alternativa)

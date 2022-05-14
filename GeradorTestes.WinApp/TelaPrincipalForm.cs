@@ -154,7 +154,7 @@ namespace GeradorTestes.WinApp
 
             controladores.Add("Disciplinas", new ControladorDisciplina(repositorioDisciplina));
             controladores.Add("Materias", new ControladorMateria(repositorioMateria, repositorioDisciplina));
-            controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria));
+            controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioDisciplina));
             controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria));
         }
 

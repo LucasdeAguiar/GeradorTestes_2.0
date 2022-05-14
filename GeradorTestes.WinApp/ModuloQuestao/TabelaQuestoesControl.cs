@@ -30,6 +30,9 @@ namespace GeradorTestes.WinApp.ModuloQuestao
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Enunciado", HeaderText = "Enunciado"},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Matéria"},
 
            };
 
@@ -43,7 +46,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
 
             foreach (Questao questao in questoes)
             {
-                grid.Rows.Add(questao.Numero, questao.Enunciado);
+                grid.Rows.Add(questao.Numero, questao.Enunciado, questao.Disciplina, questao.Materia);
             }
         }
 
