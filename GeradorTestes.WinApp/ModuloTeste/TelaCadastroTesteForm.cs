@@ -19,13 +19,16 @@ namespace GeradorTestes.WinApp.ModuloTeste
     {
         private Teste teste;
         IRepositorioQuestao repositorioQuestao;
-        List<Questao> questoesTeste = new List<Questao>();
+        List<Questao> questoes = new List<Questao>();
+      
         public TelaCadastroTesteForm(List<Disciplina> disciplinas , List<Materia> materias, List<Questao> questoes, IRepositorioQuestao repositorioQuestao)
         {
             InitializeComponent();
             CarregarMaterias(materias);
             CarregarDisciplinas(disciplinas);
             this.repositorioQuestao = repositorioQuestao;
+            this.questoes = questoes;
+          
 
         }
         private void CarregarDisciplinas(List<Disciplina> disciplinas)
@@ -86,7 +89,7 @@ namespace GeradorTestes.WinApp.ModuloTeste
             teste.Data = txtData.Value;
             teste.Materia = (Materia)cmbMaterias.SelectedItem;
             teste.Disciplina = (Disciplina)cmbDisciplinas.SelectedItem;
-            teste.qtdQuestoes = Convert.ToInt32(txtQtdQuestoes);
+            teste.qtdQuestoes = Convert.ToInt32(txtQtdQuestoes.Text);
 
             var resultadoValidacao = GravarRegistro(teste);
 
@@ -132,30 +135,37 @@ namespace GeradorTestes.WinApp.ModuloTeste
 
         private void btnSortearQuestoes_Click(object sender, EventArgs e)
         {
-            btnSortearQuestoes.Enabled = false;
+           listQuestoes.Items.Clear();
 
-            int contadorQuestao = 1;
+           teste.questoes = obterQuestoes();
+           
+            foreach (var item in teste.questoes)
+                listQuestoes.Items.Add(item);
 
-            var questoes = repositorioQuestao.SelecionarTodos()
-                            .Where(x => x.Disciplina.Nome == cmbDisciplinas.Text)
-                            .Where(x => x.Materia.Nome == cmbMaterias.Text)
-                            .ToList();
+           
+        }
 
-            var random = new Random();
-            var questoesSorteadas = questoes.OrderBy(item => random.Next()).ToList();
+        private List<Questao> obterQuestoes()
+        {
+            int contador = 0;
+            var rnd = new Random();
+            var randomized = questoes.OrderBy(item => rnd.Next());
+            List<Questao> questoesTeste = new List<Questao>();
 
-            for (int i = 0; i < int.Parse(txtQtdQuestoes.Text); i++)
+            foreach (var item in randomized)
             {
-                questoesTeste.Add(questoesSorteadas.ElementAt(i));
+                //if (item.Materia == Teste.Materia)
+                    questoesTeste.Add(item);
+                    contador++;
+
+                if(contador == Convert.ToInt32(txtQtdQuestoes.Text))
+                {
+                    break;
+                }
+
             }
 
-            listQuestoes.Items.Clear();
-
-            foreach (var item in questoesTeste)
-            {
-                listQuestoes.Items.Add(contadorQuestao + " /  " + item.ToString());
-                contadorQuestao++;
-            }
+            return questoesTeste;
         }
     }
 }

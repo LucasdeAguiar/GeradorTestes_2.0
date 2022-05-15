@@ -40,7 +40,7 @@
             this.panel1.Controls.Add(this.grid);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 298);
+            this.panel1.Size = new System.Drawing.Size(706, 298);
             this.panel1.TabIndex = 0;
             // 
             // grid
@@ -49,7 +49,7 @@
             this.grid.Location = new System.Drawing.Point(3, 3);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(524, 295);
+            this.grid.Size = new System.Drawing.Size(700, 295);
             this.grid.TabIndex = 0;
             // 
             // TabelaQuestoesControl
@@ -58,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "TabelaQuestoesControl";
-            this.Size = new System.Drawing.Size(527, 298);
+            this.Size = new System.Drawing.Size(706, 298);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
