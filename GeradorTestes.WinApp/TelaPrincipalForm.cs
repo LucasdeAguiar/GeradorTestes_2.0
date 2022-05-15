@@ -158,6 +158,9 @@ namespace GeradorTestes.WinApp
             controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao));
         }
 
-        
+        private void btnGerarPdf_Click(object sender, EventArgs e)
+        {
+            controlador.GerarPdf();
+        }
     }
 }

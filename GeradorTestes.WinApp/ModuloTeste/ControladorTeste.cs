@@ -3,8 +3,11 @@ using GeradorTestes.Dominio.ModuloMateria;
 using GeradorTestes.Dominio.ModuloQuestao;
 using GeradorTestes.Dominio.ModuloTeste;
 using GeradorTestes.WinApp.Compartilhado;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +122,19 @@ namespace GeradorTestes.WinApp.ModuloTeste
             var numero = tabelaTestes.ObtemNumeroTesteSelecionado();
 
             return repositorioTeste.SelecionarPorNumero(numero);
+
+            /*
+            TabelaTestesControl tabelaTestesControl = new TabelaTestesControl();
+
+            int numeroSelecionado = tabelaTestesControl.ObtemNumeroTesteSelecionado();
+
+            Teste testeSelecionado = repositorioTeste.SelecionarPorNumero(numeroSelecionado);
+
+            //var numero = tabelaTestes.ObtemNumeroTesteSelecionado();
+            
+
+            return testeSelecionado;
+            */
         }
 
 
@@ -129,5 +145,50 @@ namespace GeradorTestes.WinApp.ModuloTeste
             tabelaTestes.AtualizarRegistros(testes);
 
         }
+
+        public override void GerarPdf()
+        {
+            Teste TesteSelecionado = ObtemTesteSelecionado();
+
+            string nomeArquivo = @"C:\Windows\Temp" + @"\teste.pdf";
+            FileStream arquivoPDF = new FileStream(nomeArquivo, FileMode.Create);
+            Document doc = new Document(PageSize.A4);
+            PdfWriter escritorPDF = PdfWriter.GetInstance(doc, arquivoPDF);
+
+            string dados = "";
+
+            Paragraph paragrafo = new Paragraph(dados, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 14, (int)System.Drawing.FontStyle.Regular));
+            paragrafo.Alignment = Element.ALIGN_CENTER;
+            paragrafo.Add(TesteSelecionado.Titulo + "\n\n");
+            paragrafo.Add("Disciplina: " + TesteSelecionado.Disciplina.Nome + "\n\n");
+            paragrafo.Add("Assunto: " + TesteSelecionado.Materia.Nome + "\n\n");
+            paragrafo.Add("Data: " + TesteSelecionado.Data.ToShortDateString() + "\n\n");
+
+            int qtdQuestoes = TesteSelecionado.questoes.Count;
+
+            Paragraph paragrafo2 = new Paragraph(dados, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 14, (int)System.Drawing.FontStyle.Regular));
+            paragrafo2.Alignment = Element.ALIGN_LEFT;
+
+            for (int i = 0; i < qtdQuestoes; i++)
+            {
+
+                int j = i + 1;
+                paragrafo2.Add("Questão " + j + " - " + TesteSelecionado.questoes[i].Enunciado + "\n\n");
+
+                for (int k = 0; k < TesteSelecionado.questoes[i].Alternativas.Count; k++)
+                {
+
+                    paragrafo2.Add("() " + TesteSelecionado.questoes[i].Alternativas[k].Descricao + "\n\n");
+
+                }
+
+            }
+
+            doc.Open();
+            doc.Add(paragrafo);
+            doc.Add(paragrafo2);
+            doc.Close();
+        }
+
     }
 }

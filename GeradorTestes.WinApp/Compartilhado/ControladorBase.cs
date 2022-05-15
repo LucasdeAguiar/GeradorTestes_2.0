@@ -13,6 +13,7 @@ namespace GeradorTestes.WinApp.Compartilhado
         public abstract void Editar();
         public abstract void Excluir();
 
+        public virtual void GerarPdf() { }
         public virtual void AdicionarItens() { }
 
         public virtual void AtualizarItens() { }

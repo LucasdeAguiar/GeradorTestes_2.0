@@ -34,16 +34,16 @@
             this.disciplinasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.questõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.btnGerarPdf = new System.Windows.Forms.ToolStripButton();
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.testesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -73,23 +73,30 @@
             // disciplinasMenuItem
             // 
             this.disciplinasMenuItem.Name = "disciplinasMenuItem";
-            this.disciplinasMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disciplinasMenuItem.Size = new System.Drawing.Size(130, 22);
             this.disciplinasMenuItem.Text = "Disciplinas";
             this.disciplinasMenuItem.Click += new System.EventHandler(this.disciplinasMenuItem_Click);
             // 
             // materiasToolStripMenuItem
             // 
             this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.materiasToolStripMenuItem.Text = "Materias";
             this.materiasToolStripMenuItem.Click += new System.EventHandler(this.materiasToolStripMenuItem_Click);
             // 
             // questõesToolStripMenuItem
             // 
             this.questõesToolStripMenuItem.Name = "questõesToolStripMenuItem";
-            this.questõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.questõesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.questõesToolStripMenuItem.Text = "Questões";
             this.questõesToolStripMenuItem.Click += new System.EventHandler(this.questõesToolStripMenuItem_Click);
+            // 
+            // testesToolStripMenuItem
+            // 
+            this.testesToolStripMenuItem.Name = "testesToolStripMenuItem";
+            this.testesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.testesToolStripMenuItem.Text = "Testes";
+            this.testesToolStripMenuItem.Click += new System.EventHandler(this.testesToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -97,7 +104,7 @@
             this.btnInserir,
             this.btnEditar,
             this.btnExcluir,
-            this.toolStripButton4,
+            this.btnGerarPdf,
             this.labelTipoCadastro});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -138,15 +145,16 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // toolStripButton4
+            // btnGerarPdf
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.toolStripButton4.Size = new System.Drawing.Size(30, 30);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.btnGerarPdf.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnGerarPdf.Image = ((System.Drawing.Image)(resources.GetObject("btnGerarPdf.Image")));
+            this.btnGerarPdf.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGerarPdf.Name = "btnGerarPdf";
+            this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
+            this.btnGerarPdf.Size = new System.Drawing.Size(30, 30);
+            this.btnGerarPdf.Text = "GerarPdf";
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // labelTipoCadastro
             // 
@@ -177,13 +185,6 @@
             this.panelRegistros.Name = "panelRegistros";
             this.panelRegistros.Size = new System.Drawing.Size(616, 335);
             this.panelRegistros.TabIndex = 3;
-            // 
-            // testesToolStripMenuItem
-            // 
-            this.testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            this.testesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.testesToolStripMenuItem.Text = "Testes";
-            this.testesToolStripMenuItem.Click += new System.EventHandler(this.testesToolStripMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 
@@ -221,11 +222,11 @@
         private System.Windows.Forms.ToolStripButton btnInserir;
         private System.Windows.Forms.ToolStripButton btnEditar;
         private System.Windows.Forms.ToolStripButton btnExcluir;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.ToolStripLabel labelTipoCadastro;
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem questõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnGerarPdf;
     }
 }
