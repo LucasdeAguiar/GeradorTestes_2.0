@@ -123,18 +123,6 @@ namespace GeradorTestes.WinApp.ModuloTeste
 
             return repositorioTeste.SelecionarPorNumero(numero);
 
-            /*
-            TabelaTestesControl tabelaTestesControl = new TabelaTestesControl();
-
-            int numeroSelecionado = tabelaTestesControl.ObtemNumeroTesteSelecionado();
-
-            Teste testeSelecionado = repositorioTeste.SelecionarPorNumero(numeroSelecionado);
-
-            //var numero = tabelaTestes.ObtemNumeroTesteSelecionado();
-            
-
-            return testeSelecionado;
-            */
         }
 
 
