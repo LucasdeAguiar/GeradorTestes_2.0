@@ -134,6 +134,21 @@ namespace GeradorTestes.WinApp.ModuloTeste
 
         }
 
+        public override void Duplicar()
+        {
+            Teste testeSelecionado = ObtemTesteSelecionado();
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show("Selecione um teste primeiro",
+                "Duplicar de Testes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
+
+        }
+
         public override void GerarPdf()
         {
             Teste TesteSelecionado = ObtemTesteSelecionado();

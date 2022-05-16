@@ -137,7 +137,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
         private void btnAdicionarAlternativa_Click(object sender, EventArgs e)
         {
             AdicionarAlternativa();
-
+          
 
             listAlternativas.Items.Clear();
 
@@ -145,7 +145,13 @@ namespace GeradorTestes.WinApp.ModuloQuestao
                 foreach (var alternativa in questao.Alternativas)
                     listAlternativas.Items.Add(alternativa);
 
-            checkMarcarAlternativaCorreta.Enabled = false;
+          
+
+            if (checkMarcarAlternativaCorreta.Checked == true)
+            {
+                checkMarcarAlternativaCorreta.Enabled = false;
+                
+            }
         }
 
         private void AdicionarAlternativa()

@@ -162,5 +162,10 @@ namespace GeradorTestes.WinApp
         {
             controlador.GerarPdf();
         }
+
+        private void btnDuplicar_Click(object sender, EventArgs e)
+        {
+            controlador.Duplicar();
+        }
     }
 }

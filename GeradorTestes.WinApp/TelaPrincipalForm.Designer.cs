@@ -44,6 +44,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
+            this.btnDuplicar = new System.Windows.Forms.ToolStripButton();
             this.toolbox.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -104,6 +105,7 @@
             this.btnInserir,
             this.btnEditar,
             this.btnExcluir,
+            this.btnDuplicar,
             this.btnGerarPdf,
             this.labelTipoCadastro});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -186,6 +188,16 @@
             this.panelRegistros.Size = new System.Drawing.Size(616, 335);
             this.panelRegistros.TabIndex = 3;
             // 
+            // btnDuplicar
+            // 
+            this.btnDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("btnDuplicar.Image")));
+            this.btnDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDuplicar.Name = "btnDuplicar";
+            this.btnDuplicar.Size = new System.Drawing.Size(23, 30);
+            this.btnDuplicar.Text = "Duplicar Teste";
+            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.ToolStripMenuItem questõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnGerarPdf;
+        private System.Windows.Forms.ToolStripButton btnDuplicar;
     }
 }
