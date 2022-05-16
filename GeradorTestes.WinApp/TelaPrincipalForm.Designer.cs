@@ -195,6 +195,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.toolbox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.toolbox;
             this.Name = "TelaPrincipalForm";
             this.ShowIcon = false;

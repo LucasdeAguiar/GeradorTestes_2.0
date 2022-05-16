@@ -35,10 +35,10 @@
             // grid
             // 
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(3, 3);
+            this.grid.Location = new System.Drawing.Point(0, 6);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(517, 301);
+            this.grid.Size = new System.Drawing.Size(580, 298);
             this.grid.TabIndex = 0;
             // 
             // TabelaTestesControl
@@ -47,7 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
             this.Name = "TabelaTestesControl";
-            this.Size = new System.Drawing.Size(520, 307);
+            this.Size = new System.Drawing.Size(580, 307);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 

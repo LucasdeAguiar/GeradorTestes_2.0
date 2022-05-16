@@ -10,6 +10,14 @@ namespace GeradorTestes.Dominio.ModuloMateria
         {
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty();
+
+            RuleFor(x => x.Disciplina)
+                .NotNull()
+                .NotEmpty();
+
+            RuleFor(x => x.Serie)
+                .NotNull()
+                .NotEmpty();
         }
     }
 }

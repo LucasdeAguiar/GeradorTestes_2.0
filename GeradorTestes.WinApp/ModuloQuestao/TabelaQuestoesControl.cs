@@ -46,7 +46,7 @@ namespace GeradorTestes.WinApp.ModuloQuestao
 
             foreach (Questao questao in questoes)
             {
-                grid.Rows.Add(questao.Numero, questao.Enunciado, questao.Disciplina, questao.Materia);
+                grid.Rows.Add(questao.Numero, questao.Enunciado, questao.Disciplina.Nome, questao.Materia.Nome);
             }
         }
 
