@@ -153,6 +153,7 @@
             this.checkMarcarAlternativaCorreta.TabIndex = 12;
             this.checkMarcarAlternativaCorreta.Text = "Alternativa Correta";
             this.checkMarcarAlternativaCorreta.UseVisualStyleBackColor = true;
+            //this.checkMarcarAlternativaCorreta.CheckedChanged += new System.EventHandler(this.checkMarcarAlternativaCorreta_CheckedChanged);
             // 
             // cmbDisciplinas
             // 

@@ -17,6 +17,9 @@ namespace GeradorTestes.Dominio.ModuloQuestao
             RuleFor(x => x.Materia)
                 .NotEmpty()
                 .NotNull();
+            RuleFor(x => x.Disciplina)
+               .NotNull()
+               .NotEmpty();
         }
 
         }
