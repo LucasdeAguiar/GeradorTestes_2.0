@@ -122,6 +122,7 @@
             this.checkMarcarPrimeiraSerie.TabIndex = 11;
             this.checkMarcarPrimeiraSerie.Text = "1 Série";
             this.checkMarcarPrimeiraSerie.UseVisualStyleBackColor = true;
+            this.checkMarcarPrimeiraSerie.CheckedChanged += new System.EventHandler(this.checkMarcarPrimeiraSerie_CheckedChanged);
             // 
             // checkMarcarSegundaSerie
             // 
@@ -132,6 +133,7 @@
             this.checkMarcarSegundaSerie.TabIndex = 12;
             this.checkMarcarSegundaSerie.Text = "2 Série";
             this.checkMarcarSegundaSerie.UseVisualStyleBackColor = true;
+            this.checkMarcarSegundaSerie.CheckedChanged += new System.EventHandler(this.checkMarcarSegundaSerie_CheckedChanged);
             // 
             // TelaCadastroMateriaForm
             // 

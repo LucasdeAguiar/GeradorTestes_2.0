@@ -67,11 +67,13 @@ namespace GeradorTestes.WinApp.ModuloMateria
             if (checkMarcarPrimeiraSerie.Checked)
             {
                 materia.Serie = "1 Série";
+               
             }
 
             if (checkMarcarSegundaSerie.Checked)
             {
-                materia.Serie = "2 Serie";
+                materia.Serie = "2 Série";
+              
             }
 
             if (resultadoValidacao.IsValid == false)
@@ -100,5 +102,33 @@ namespace GeradorTestes.WinApp.ModuloMateria
             cmbDisciplinas.Enabled = checkMarcarDisciplina.Checked;
             cmbDisciplinas.SelectedIndex = -1;
         }
+
+        private void checkMarcarPrimeiraSerie_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkMarcarPrimeiraSerie.Checked == false)
+            {
+                checkMarcarSegundaSerie.Enabled = true;
+            }
+            else
+            {
+
+                checkMarcarSegundaSerie.Enabled = false;
+            }
+        }
+
+        private void checkMarcarSegundaSerie_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkMarcarSegundaSerie.Checked == false)
+            {
+                checkMarcarPrimeiraSerie.Enabled = true;
+            }
+            else
+            {
+                checkMarcarPrimeiraSerie.Enabled = false;
+            }
+            
+        }
+
+      
     }
 }
