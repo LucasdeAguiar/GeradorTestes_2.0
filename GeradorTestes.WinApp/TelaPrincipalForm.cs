@@ -74,16 +74,38 @@ namespace GeradorTestes.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione uma tela de cadastro primeiro",
+                "Menu Principal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
             controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione uma tela de cadastro primeiro",
+                "Menu Principal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (controlador == null)
+            {
+                MessageBox.Show("Selecione uma tela de cadastro primeiro",
+                "Menu Principal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             controlador.Excluir();
         }
 
