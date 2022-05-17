@@ -146,13 +146,17 @@ namespace GeradorTestes.WinApp.ModuloTeste
             }
 
 
+            Teste testeClonado = new Teste();
+
+            ClonarTeste(testeSelecionado, testeClonado);
+
             var disciplinas = repositorioDisciplina.SelecionarTodos();
             var materias = repositorioMateria.SelecionarTodos();
             var questoes = repositorioQuestao.SelecionarTodos();
 
             TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias, questoes, repositorioQuestao);
              
-            tela.Teste = testeSelecionado;
+            tela.Teste = testeClonado;
 
             tela.GravarRegistro = repositorioTeste.Inserir;
 
@@ -162,6 +166,20 @@ namespace GeradorTestes.WinApp.ModuloTeste
             {
                 CarregarTestes();
             }
+        }
+
+        private void ClonarTeste(Teste testeSelecionado, Teste testeClonado)
+        {
+            testeClonado.Titulo = testeSelecionado.Titulo;
+
+            testeClonado.Disciplina = testeSelecionado.Disciplina;
+
+            testeClonado.Materia = testeSelecionado.Materia;
+
+            testeClonado.qtdQuestoes = testeSelecionado.qtdQuestoes;
+
+            testeClonado.Data = testeSelecionado.Data;
+            
         }
 
         public override void GerarPdf()

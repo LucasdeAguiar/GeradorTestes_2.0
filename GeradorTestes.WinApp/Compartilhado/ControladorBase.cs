@@ -17,6 +17,8 @@ namespace GeradorTestes.WinApp.Compartilhado
 
 
         public virtual void Duplicar() { }
+
+        public virtual void ClonarTeste() { }
         public virtual void AdicionarItens() { }
 
         public virtual void AtualizarItens() { }
