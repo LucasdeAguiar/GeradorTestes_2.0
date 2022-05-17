@@ -146,7 +146,22 @@ namespace GeradorTestes.WinApp.ModuloTeste
             }
 
 
+            var disciplinas = repositorioDisciplina.SelecionarTodos();
+            var materias = repositorioMateria.SelecionarTodos();
+            var questoes = repositorioQuestao.SelecionarTodos();
 
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas, materias, questoes, repositorioQuestao);
+             
+            tela.Teste = testeSelecionado;
+
+            tela.GravarRegistro = repositorioTeste.Inserir;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarTestes();
+            }
         }
 
         public override void GerarPdf()
