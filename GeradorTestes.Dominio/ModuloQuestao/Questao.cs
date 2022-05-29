@@ -22,7 +22,7 @@ namespace GeradorTestes.Dominio.ModuloQuestao
 
         public Questao()
         {
-            this.Alternativas = new List<Alternativa>();
+            this.Alternativas = new();
         }
 
         public Questao(string enunciado,List<Alternativa> alternativas,Disciplina disciplina, Materia materia)

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GeradorTestes.Infra.Arquivos\GeradorTestes.Infra.Arquivos.csproj" />
+    <ProjectReference Include="..\GeradorTestes.Infra.BancoDados\GeradorTestes.Infra.BancoDados.csproj" />
   </ItemGroup>
 
   <ItemGroup>

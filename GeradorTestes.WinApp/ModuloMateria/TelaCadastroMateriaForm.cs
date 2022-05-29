@@ -18,9 +18,12 @@ namespace GeradorTestes.WinApp.ModuloMateria
         private Materia materia;
         public TelaCadastroMateriaForm(List<Disciplina> disciplinas)
         {
+
             InitializeComponent();
 
             CarregarDisciplinas(disciplinas);
+
+            
         }
 
         private void CarregarDisciplinas(List<Disciplina> disciplinas)
@@ -42,6 +45,23 @@ namespace GeradorTestes.WinApp.ModuloMateria
             {
                 materia = value;
 
+                if (txtNumero.Text != "0")
+                {
+                    checkMarcarPrimeiraSerie.Enabled = true;
+                    checkMarcarSegundaSerie.Enabled = true;
+
+
+                    if (materia.Serie == "1 Série")
+                    {
+                        checkMarcarPrimeiraSerie.Checked = true;
+                    }else if (materia.Serie == "2 Série")
+                    {
+                        checkMarcarSegundaSerie.Checked = true;
+                    }
+
+
+                }
+
                 txtNumero.Text = materia.Numero.ToString();
                 txtNome.Text = materia.Nome;
 
@@ -51,9 +71,11 @@ namespace GeradorTestes.WinApp.ModuloMateria
 
                 cmbDisciplinas.SelectedItem = materia.Disciplina;
 
-                checkMarcarPrimeiraSerie.Checked = materia.Serie != null;
+               // checkMarcarPrimeiraSerie.Checked = materia.Serie != null;
 
-                checkMarcarSegundaSerie.Checked = materia.Serie != null;
+               // checkMarcarSegundaSerie.Checked = materia.Serie != null;
+
+
             }
         }
 
@@ -62,7 +84,8 @@ namespace GeradorTestes.WinApp.ModuloMateria
             materia.Nome = txtNome.Text;
             materia.Disciplina = (Disciplina)cmbDisciplinas.SelectedItem;
 
-            var resultadoValidacao = GravarRegistro(materia);
+            
+
 
             if (checkMarcarPrimeiraSerie.Checked)
             {
@@ -70,11 +93,15 @@ namespace GeradorTestes.WinApp.ModuloMateria
                
             }
 
+
+
             if (checkMarcarSegundaSerie.Checked)
             {
                 materia.Serie = "2 Série";
               
             }
+
+            var resultadoValidacao = GravarRegistro(materia);
 
             if (resultadoValidacao.IsValid == false)
             {

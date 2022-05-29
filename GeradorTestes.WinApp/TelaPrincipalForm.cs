@@ -3,6 +3,9 @@ using GeradorTestes.Infra.Arquivos.ModuloDisciplina;
 using GeradorTestes.Infra.Arquivos.ModuloMateria;
 using GeradorTestes.Infra.Arquivos.ModuloQuestao;
 using GeradorTestes.Infra.Arquivos.ModuloTeste;
+using GeradorTestes.Infra.BancoDados.ModuloDisciplina;
+using GeradorTestes.Infra.BancoDados.ModuloMateria;
+using GeradorTestes.Infra.BancoDados.ModuloQuestao;
 using GeradorTestes.WinApp.Compartilhado;
 using GeradorTestes.WinApp.ModuloDisciplina;
 using GeradorTestes.WinApp.ModuloMateria;
@@ -167,9 +170,18 @@ namespace GeradorTestes.WinApp
 
         private void InicializarControladores()
         {
-            var repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contextoDados);
-            var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
-            var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
+            var repositorioDisciplina = new RepositorioDisciplinaEmBancoDados();
+            //var repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contextoDados);
+
+            var repositorioMateria = new RepositorioMateriaEmBancoDados();
+            //var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
+
+
+            var repositorioQuestao = new RepositorioQuestaoEmBancoDados();
+            //var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
+
+
+
             var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
 
             controladores = new Dictionary<string, ControladorBase>();
@@ -182,12 +194,25 @@ namespace GeradorTestes.WinApp
 
         private void btnGerarPdf_Click(object sender, EventArgs e)
         {
-            controlador.GerarPdf();
+            try
+            {
+                controlador.GerarPdf();
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnDuplicar_Click(object sender, EventArgs e)
         {
-            controlador.Duplicar();
+            try
+            {
+                controlador.Duplicar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GeradorTestes.Dominio.ModuloQuestao
 {
     [Serializable]
-    public class Alternativa 
+    public class Alternativa : EntidadeBase<Alternativa>
     {
         public string Descricao { get; set; }
         public bool estaCorreta{ get; set; }
@@ -36,6 +36,12 @@ namespace GeradorTestes.Dominio.ModuloQuestao
         {
             this.Descricao = alternativa.Descricao;
             this.estaCorreta = alternativa.estaCorreta;
+        }
+
+        public override void atualizar(Alternativa registro)
+        {
+            this.Descricao = registro.Descricao;
+            this.estaCorreta = registro.estaCorreta;
         }
     }
 }
