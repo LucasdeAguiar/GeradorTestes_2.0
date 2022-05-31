@@ -6,6 +6,7 @@ using GeradorTestes.Infra.Arquivos.ModuloTeste;
 using GeradorTestes.Infra.BancoDados.ModuloDisciplina;
 using GeradorTestes.Infra.BancoDados.ModuloMateria;
 using GeradorTestes.Infra.BancoDados.ModuloQuestao;
+using GeradorTestes.Infra.BancoDados.ModuloTeste;
 using GeradorTestes.WinApp.Compartilhado;
 using GeradorTestes.WinApp.ModuloDisciplina;
 using GeradorTestes.WinApp.ModuloMateria;
@@ -181,8 +182,8 @@ namespace GeradorTestes.WinApp
             //var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
 
 
-
-            var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
+            var repositorioTeste = new RepositorioTesteEmBancoDados();
+            //var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
 
             controladores = new Dictionary<string, ControladorBase>();
 
