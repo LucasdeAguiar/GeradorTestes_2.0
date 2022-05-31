@@ -210,7 +210,7 @@ namespace GeradorTestes.Infra.BancoDados.ModuloTeste
             }
 
 
-            comandoEdicaoQuestao.ExecuteNonQuery(); // Edita aqui
+            comandoEdicaoQuestao.ExecuteNonQuery(); 
             conexaoComBanco.Close();
 
             return resultado;

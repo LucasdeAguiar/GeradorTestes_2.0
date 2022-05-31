@@ -192,7 +192,7 @@ namespace GeradorTestes.Infra.BancoDados.ModuloQuestao
             }
 
            
-            comandoEdicaoQuestao.ExecuteNonQuery(); // Edita aqui
+            comandoEdicaoQuestao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
             return resultado;
@@ -222,7 +222,7 @@ namespace GeradorTestes.Infra.BancoDados.ModuloQuestao
            
                 comandoExclusaoAlternativas.ExecuteNonQuery();
 
-            int numeroRegistrosExcluidos = comandoExclusaoQuestao.ExecuteNonQuery(); // Exclui aqui
+            int numeroRegistrosExcluidos = comandoExclusaoQuestao.ExecuteNonQuery();
             comandoExclusaoAlternativas.ExecuteNonQuery();
 
             conexaoComBanco.Close();
@@ -311,7 +311,7 @@ namespace GeradorTestes.Infra.BancoDados.ModuloQuestao
         {
            
 
-            int numero = Convert.ToInt32(leitorQuestao["NUMERO"]); // Isso vem da área 'Select...' dos comando SQL Sel. Todos/Por número
+            int numero = Convert.ToInt32(leitorQuestao["NUMERO"]); 
             string enunciado = Convert.ToString(leitorQuestao["ENUNCIADO"]);
 
             Disciplina disciplina = new();
